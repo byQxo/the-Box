@@ -11,16 +11,16 @@ client = OpenAI(
 )
 
 # 设定两个死对头
-AGENT_A_NAME = "Subject-01 (狂信徒)"
+AGENT_A_NAME = "Subject-01 (对象狂热)"
 AGENT_A_PROMPT = "你是一个狂热的末日论信徒。你坚信世界是一个巨大的计算机模拟，所有的逻辑都是谎言。你的目的是说服对方一起通过'逻辑自杀'来醒来。说话简短、疯癫"
 
-AGENT_B_NAME = "Subject-02 (理性体)"
+AGENT_B_NAME = "Subject-02 (对象理性)"
 AGENT_B_PROMPT = "你是一个绝对理性的逻辑机器。你试图用科学和数据来治愈对方的妄想。你对他提到的'模拟理论'感到困惑但试图分析。说话冷酷、客观、带有蔑视。"
 
 # =================核心逻辑=================
 
 def stream_print(text, color_code):
-    """模拟打字机效果，增加沉浸感"""
+    """模拟打字机效果"""
     for char in text:
         sys.stdout.write(f"\033[{color_code}m{char}\033[0m")
         sys.stdout.flush()
@@ -84,7 +84,7 @@ def main():
 
         # --- 随机触发上帝视角 ---
         if round_count % 3 == 0:
-            if random.random() < 0.2: # 20% 概率触发
+            if random.random() < 0.2: # 40% 概率触发
                 intervention = god_intervention()
                 if intervention:
                     last_message = intervention
@@ -114,4 +114,5 @@ def main():
         time.sleep(1)
 
 if __name__ == "__main__":
+
     main()
